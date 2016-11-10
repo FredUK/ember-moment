@@ -34,6 +34,10 @@ export default BaseHelper.extend({
       format = params[1];
     }
 
+    if (format instanceof Ember.Handlebars.SafeString) {
+      format = format.string;
+    }
+
     let time = this.morphMoment(moment(...args), { locale, timeZone });
 
     return time.format(format);
